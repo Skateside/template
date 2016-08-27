@@ -364,8 +364,7 @@ var template = (function () {
 
         var tree = makeTree();
         var template = {
-            render: tree.render,
-tree: tree
+            render: tree.render
         };
 
         setup(tree);
