@@ -11,8 +11,8 @@ var template = (function () {
 
     "use strict";
 
-    var BRANCH_PART = /(^|.|\r|\n)\$\{#[^\}]+\}/;
-    var PROCESS_BRANCH = /(^|.|\r|\n)\$\{#(\w+)\s+([^\}]+)\}$/;
+    var BRANCH_PART = /(^|\\|\r|\n)?\$\{#[^\}]+\}/;
+    var PROCESS_BRANCH = /(^|\\|\r|\n)?\$\{#(\w+)\s+([^\}]+)\}$/;
 
     var makeTemplate;
 
@@ -341,7 +341,7 @@ var template = (function () {
 
         tree.init();
         util.String.tokenise(string, BRANCH_PART).forEach(function (part) {
-
+console.debug("%o.tokenise(%o) part = %o", string, BRANCH_PART, part);
             var match = part.match(PROCESS_BRANCH);
 
             if (match && match[1] !== "\\") {
