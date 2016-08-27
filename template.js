@@ -82,6 +82,10 @@ var template = (function () {
                 branches.push(branch);
             },
 
+            getBranches: function () {
+                return branches.concat();
+            },
+
             render: function (data) {
                 return util.Array.invoke(branches, "render", data).join("");
             },
@@ -194,8 +198,8 @@ var template = (function () {
 
     function pair(object) {
 
-        return util.Array.isArrayLike(data)
-            ? util.Array.map(data, function (value, key) {
+        return util.Array.isArrayLike(object)
+            ? util.Array.map(object, function (value, key) {
 
                 return {
                     key: key,
@@ -203,7 +207,7 @@ var template = (function () {
                 };
 
             })
-            : util.Object.pair(data);
+            : util.Object.pair(object);
 
     }
 
@@ -227,11 +231,12 @@ var template = (function () {
 
                 var rendered = "";
                 var datum = pair(data[dataKey]);
+
                 var branchData = util.Object.assign({}, data);
 
                 datum.forEach(function (pair) {
 
-                    eachBranch.branches.forEach(function (branch) {
+                    eachBranch.getBranches().forEach(function (branch) {
 
                         branchData[iterationValue] = pair.value;
 
@@ -322,7 +327,7 @@ var template = (function () {
 
                 }
 
-                tree.setBranch(branch.getParent());
+                tree.setBranch(currentBranch.getParent());
 
             }
 
@@ -359,7 +364,8 @@ var template = (function () {
 
         var tree = makeTree();
         var template = {
-            render: tree.render
+            render: tree.render,
+tree: tree
         };
 
         setup(tree);

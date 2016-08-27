@@ -597,7 +597,8 @@ var util = (function () {
 
     assign(utility.Array, {
         map: arrayMap,
-        invoke: arrayInvoke
+        invoke: arrayInvoke,
+        isArrayLike: isArrayLike
     });
 
     assign(utility.Function, {
@@ -610,6 +611,7 @@ var util = (function () {
 
     assign(utility.Object, {
         access: access,
+        assign: assign,
         pair: objectPair
     });
 
