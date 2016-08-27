@@ -266,6 +266,7 @@ var util = (function () {
      *      util.String.toPath("one.two"); // -> ["one", "two"]
      *      util.String.toPath("one[1].two"); // -> ["one", "1", "two"]
      *
+     *  Taken from [Lodash](https://lodash.com/)
      **/
     function stringToPath(paths) {
 
